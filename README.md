@@ -136,3 +136,10 @@ The application follows an **offline-first approach** to ensure usability even w
 - API calls are made only to demonstrate RESTful interactions, not for actual data persistence.
 
 This strategy guarantees data availability, responsiveness, and a consistent user experience regardless of network connectivity.
+
+## 🎥 Video Demonstration
+
+A short demo video showing the working application:
+
+👉 [Click here to watch the demo video](https://github.com/user-attachments/assets/32b25af9-97f2-4c51-8fce-8c45de752a6d)
+
