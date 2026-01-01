@@ -6,7 +6,7 @@ class AuthRepository {
   AuthRepository(this.box);
 
   static const _email = 'admin@test.com';
-  static const _password = '123456';
+  static const _password = 'Admin@123';
 
   bool isLoggedIn() => box.get('loggedIn', defaultValue: false);
 

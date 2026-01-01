@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager_bloc/screens/search_appbar.dart';
+import 'package:task_manager_bloc/screens/todo_card.dart';
 
 import '../bloc/authentication_bloc/authentication_bloc.dart';
 import '../bloc/authentication_bloc/authentication_events.dart';
@@ -242,6 +243,85 @@ class TaskListScreen extends StatelessWidget {
           },
         );
       },
+    );
+  }
+}
+
+class EmptyView extends StatelessWidget {
+  const EmptyView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.task_alt, size: 72, color: Colors.grey),
+          SizedBox(height: 12),
+          Text(
+            'No tasks yet',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: 4),
+          Text('Tap “Add Task” to get started'),
+        ],
+      ),
+    );
+  }
+}
+
+class LoadingView extends StatelessWidget {
+  const LoadingView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+class ErrorView extends StatelessWidget {
+  final String message;
+  final VoidCallback onRetry;
+
+  const ErrorView({super.key, required this.message, required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(message),
+          const SizedBox(height: 12),
+          ElevatedButton(
+            onPressed: onRetry,
+            child: const Text('Retry'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SearchEmptyView extends StatelessWidget {
+  const SearchEmptyView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.search_off, size: 72, color: Colors.grey),
+          SizedBox(height: 12),
+          Text(
+            'No matching tasks',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: 4),
+          Text('Try a different keyword'),
+        ],
+      ),
     );
   }
 }
